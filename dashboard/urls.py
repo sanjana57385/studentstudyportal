@@ -12,5 +12,7 @@ urlpatterns = [
 	path('delete_homework/<int:pk>',views.delete_homework,name="delete-homework"),
 
 	path('youtube',views.youtube,name="youtube"),
-	
+
+	path('todo',views.todo,name="todo"),
+
 ]

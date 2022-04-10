@@ -24,7 +24,7 @@
     <div class="col-md-3">
       <a href="#">
         <div class="card">
-          <img class="card-img-top" src="{% static 'images/youtube.jpg' %}" alt="Notes image">
+          <img class="card-img-top" src="{% static 'images/youtube.png' %}" alt="Notes image">
           <div class="card-body">
             <h5 class="card-title ">
               Youtube
@@ -41,6 +41,19 @@
           <div class="card-body">
             <h5 class="card-title ">
               To Do
+            </h5>
+            Add your to-do lists for your day and remove them as you finish
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/homework.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Assignments
             </h5>
             Add your to-do lists for your day and remove them as you finish
           </div>
@@ -110,7 +123,7 @@
     </div>
   </div>
  
-  <div class="col-md-3">
+  {% comment %} <div class="col-md-3">
     <a href="#">
       <div class="card">
         <img class="card-img-top" src="{% static 'images/conversion.jpg' %}" alt="Notes image">
@@ -121,7 +134,7 @@
           Done with the Course..?? Get collection of all your certificates Here.</div>
       </div>
     </a>
-  </div>
+  </div> {% endcomment %}
 </div>
 
 </section>

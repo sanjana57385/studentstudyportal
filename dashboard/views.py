@@ -193,5 +193,26 @@ def dictionary(request):
 
 def wiki(request):
 	return render(request,"dashboard/wiki.html")
+
+
+
+def profile(request):
+	homeworks = Homework.objects.filter(is_finished= False, user=request.user)
+	todos = Todo.objects.filter(is_finished= False, user=request.user)
+	if len(homeworks) == 0:
+		homework_done = True
+	else:
+		homework_done = False
+	if len(todos) == 0:
+		todos_done = True
+	else:
+		todos_done = False
+	context = {
+		'homeworks' : homeworks,
+		'todos' : todos,
+		'homework_done' : homework_done,
+		'todos_done' : todos_done
+	}
+	return render(request,"dashboard/profile.html",context)
 	
 	

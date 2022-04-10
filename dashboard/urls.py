@@ -19,5 +19,8 @@ urlpatterns = [
 	path('dictionary',views.dictionary,name="dictionary"),
 
 	path('wiki',views.wiki,name="wiki"),
+	path('wiki',views.wiki,name="wiki"),
+
+	path('profile/',dash_views.profile,name='profile'),
 
 ]

@@ -6,6 +6,7 @@ from . forms import *
 from django.contrib import messages
 from django.views import generic
 from youtubesearchpython import VideosSearch
+import requests 
 # Create your views here.
 def home(request):
 	return render(request,'dashboard/home.html')
@@ -36,21 +37,21 @@ def homework(request):
 	if request.method == "POST":
 		form = HomeworkForm(request.POST)
 		if form.is_valid():
-			try:
-				finished = request.POST['is_finished']
-				if finished == 'on':
-					finished = True
-				else:
-				    finished = False
-			except:
-				finished = False
+			# try:
+			# 	finished = request.POST['is_finished']
+			# 	if finished == 'on':
+			# 		finished = True
+			# 	else:
+			# 	    finished = False
+			# except:
+			#   finished = False
 			homeworks = Homework(
 				user = request.user,
 				subject = request.POST['subject'],
 				title = request.POST['title'],
 				description = request.POST['description'],
 			    due = request.POST['due'],
-				is_finished = finished
+				# is_finished = finished
 			)
 			homeworks.save()
 			messages.success(request,f'Homework Added from {request.user.username}!!')
@@ -127,3 +128,70 @@ def todo(request):
 	}
 	return render(request, "dashboard/todo.html",context)
 
+def books(request):
+	if request.method == "POST":
+		form = DashboardForm(request.POST)
+		text = request.POST.get['text']
+		url = "https://www.googleapis.com/books/v1/volumes?q="+ text
+		r = requests.get(url)
+		answer = r.json()
+		result_list = []
+		for i in range(10):
+			result_dict = {
+				'title':answer['items'][i]['volumeInfo']['title'],
+				'subtitle':answer['items'][i]['volumeInfo'].get('subtitle'),
+				'description':answer['items'][i]['volumeInfo'].get('description'),
+				'count':answer['items'][i]['volumeInfo'].get('pageCount'),
+				'category':answer['items'][i]['volumeInfo'].get('categories'),
+				'rating':answer['items'][i]['volumeInfo'].get('pageRating'),
+				'thumbnail':answer['items'][i]['volumeInfo'].get('imageLinks').get('thumbnail'),
+				'preview':answer['items'][i]['volumeInfo'].get('previewLink')
+			}
+			result_list.append(result_dict)
+			context={
+				'form':form,
+				'results':result_list
+			}
+		return render(request,'dashboard/books.html')
+
+	else:
+		form = DashboardForm()
+	context = {'form':form}
+	return render(request,"dashboard/books.html",context)
+	
+def dictionary(request):
+	if request.method == "POST":
+		form = DashboardForm(request.POST)
+		text = request.POST.get['text']
+		url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/"+ text
+		r = requests.get(url)
+		answer = r.json()
+		try:
+			phonetics = answer[0]['phonetics'][0]['text']
+			audio = answer[0]['phonetics'][0]['audio']
+			definition = answer[0]['meanings'][0]['definitions'][0]['definition']
+			example = answer[0]['meanings'][0]['definitions'][0]['example']
+			synonyms = answer[0]['meanings'][0]['definitions'][0]['synonyms']
+			context = {
+				'form ':form,
+				'input':text,
+				'phonetics':phonetics,
+				'audio':audio,
+				'definition':definition,
+				'example':example,
+				'synonyms':synonyms
+			}
+		except:
+			context = {
+				'form':form,
+				'input':''
+			}
+		return render(request,"dashboard/dictionary.html",context)
+	else:
+		form = DashboardForm()
+		context = {'form':form}
+		return render(request,"dashboard/dictionary.html",context)
+
+
+	
+	

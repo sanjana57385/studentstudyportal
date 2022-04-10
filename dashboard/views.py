@@ -124,7 +124,6 @@ def todo(request):
 	context = {
 		'form' :form,
 		'todos':todo
-		
 	}
 	return render(request, "dashboard/todo.html",context)
 

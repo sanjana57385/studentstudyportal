@@ -19,11 +19,15 @@
                         <img class="img-fluid" src="{{result.thumbnail}}" alt="">
                     </div>
                     <div class="col-md-9">
+<<<<<<< HEAD
                         <h3 class="p-0 m-0">title}}</h3>
+=======
+                        <h3 class="p-0 m-0">{{result.title}}</h3>
+>>>>>>> 2c1e78fe4d73d586140275b4bb7b51b51faf308b
                         <b>
-                            <u>
+                            {% comment %} <u>
                                 <h5 class="p-0 m-0">{{result.subtitle}}</h5>
-                            </u>
+                            </u> {% endcomment %}
                         </b>
                         {% if result.description %}
                         <h6 class="p-0 m-1">{{result.description}}</h6>
@@ -37,10 +41,10 @@
                             </h6>
                             {% endif %}
                             {%if result.count %}
-                            <h6 class="ml-0 mt-1">Pages:{{result.count}}</h6>
+                            <h6 class="ml-0 mt-1">Pages: {{result.count}}</h6>
                             {% endif %}
                            {% if result.rating %}
-                            <h6 class="ml-0 mt-1">Rating:{{result.rating}}</h6>
+                            <h6 class="ml-0 mt-1">Rating: {{result.rating}}</h6>
                             {% endif %}
                         </b>
                     </div>

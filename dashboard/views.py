@@ -111,7 +111,7 @@ def youtube(request):
 				'form':form,
 				'results':result_list
 			}
-		return render(request,'dashboard/youtube.html')
+		return render(request,'dashboard/youtube.html',context)
 
 	else:
 		form = DashboardForm()

@@ -17,15 +17,11 @@ urlpatterns = [
 	path('books',views.books,name="books"),
 
 	path('dictionary',views.dictionary,name="dictionary"),
+	#path('wiki',views.wiki,name="wiki"),
+	#path('wiki',views.wiki,name="wiki"),
 
-<<<<<<< HEAD
-	path('wiki',views.wiki,name="wiki"),
-	path('wiki',views.wiki,name="wiki"),
-
-	path('profile/',dash_views.profile,name='profile'),
-=======
-	# path('wiki',views.wiki,name="wiki"),3:02:35
+	#path('profile/',dash_views.profile,name='profile'),
+	#path('wiki',views.wiki,name="wiki"),3:02:35
 	path('conversion',views.conversion,name="conversion")
->>>>>>> fc66d626ec585359fd2fa20a73f608e3c63725df
 
 ]

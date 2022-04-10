@@ -111,7 +111,7 @@ def youtube(request):
 				'form':form,
 				'results':result_list
 			}
-		return render(request,'dashboard/youtube.html')
+		return render(request,'dashboard/youtube.html',context)
 
 	else:
 		form = DashboardForm()
@@ -131,7 +131,7 @@ def todo(request):
 def books(request):
 	if request.method == "POST":
 		form = DashboardForm(request.POST)
-		text = request.POST.get['text']
+		text = request.POST['text']
 		url = "https://www.googleapis.com/books/v1/volumes?q="+ text
 		r = requests.get(url)
 		answer = r.json()
@@ -152,7 +152,7 @@ def books(request):
 				'form':form,
 				'results':result_list
 			}
-		return render(request,'dashboard/books.html')
+		return render(request,'dashboard/books.html',context)
 
 	else:
 		form = DashboardForm()
@@ -162,7 +162,7 @@ def books(request):
 def dictionary(request):
 	if request.method == "POST":
 		form = DashboardForm(request.POST)
-		text = request.POST.get['text']
+		text = request.POST['text']
 		url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/"+ text
 		r = requests.get(url)
 		answer = r.json()

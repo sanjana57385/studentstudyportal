@@ -155,8 +155,8 @@ def books(request):
 
 	else:
 		form = DashboardForm()
-	context = {'form':form}
-	return render(request,"dashboard/books.html",context)
+		context = {'form':form}
+		return render(request,"dashboard/books.html",context)
 	
 def dictionary(request):
 	if request.method == "POST":
@@ -191,6 +191,7 @@ def dictionary(request):
 		context = {'form':form}
 		return render(request,"dashboard/dictionary.html",context)
 
-
+def wiki(request):
+	return render(request,"dashboard/wiki.html")
 	
 	

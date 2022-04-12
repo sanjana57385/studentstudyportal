@@ -129,4 +129,4 @@ STATICFILES_DIRS=[BASE_DIR/"static"]
  
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
-CRSIPY_TEMPLATE_PACK = "bootstrap4"
+CRSIPY_TEMPLATE_PACK = 'bootstrap4'

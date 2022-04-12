@@ -15,7 +15,7 @@ def notes(request):
 	if request.method == "POST":
 		form = NotesForm(request.POST)
 		if form.is_valid():
-			notes = Notes(user=request.user,title=request.POST['title'],descripttion=request.POST['description'])
+			notes = Notes(user=request.user,title=request.POST['title'],description=request.POST['description'])
 			notes.save()
 		messages.success(request,f"Notes Added from {request.user.username} Successfully!")
 	else:
@@ -119,7 +119,7 @@ def youtube(request):
 	return render(request,"dashboard/youtube.html",context)
 
 def todo(request):
-	form = TodoForm()
+	form = TodoForm(request.POST)
 	todo = Todo.objects.filter(user=request.user)
 	context = {
 		'form' :form,

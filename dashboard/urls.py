@@ -17,8 +17,15 @@ urlpatterns = [
 	path('books',views.books,name="books"),
 
 	path('dictionary',views.dictionary,name="dictionary"),
+	#path('wiki',views.wiki,name="wiki"),
+	#path('wiki',views.wiki,name="wiki"),
 
+<<<<<<< HEAD
 	# path('wiki',views.wiki,name="wiki"),3:02:35
+=======
+	#path('profile/',dash_views.profile,name='profile'),
+	#path('wiki',views.wiki,name="wiki"),3:02:35
+>>>>>>> 886a01557267e2bce30db29af6934f0572e9e6ca
 	path('conversion',views.conversion,name="conversion")
 
 ]

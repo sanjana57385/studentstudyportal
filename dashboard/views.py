@@ -119,7 +119,7 @@ def youtube(request):
 	return render(request,"dashboard/youtube.html",context)
 
 def todo(request):
-	form = TodoForm()
+	form = TodoForm(request.POST)
 	todo = Todo.objects.filter(user=request.user)
 	context = {
 		'form' :form,
@@ -267,3 +267,30 @@ def register(request):
 	}
 	return render(request,"dashboard/register.html",context)
 
+<<<<<<< HEAD
+=======
+def profile(request):
+	homeworks = Homework.objects.filter(is_finished= False, user=request.user)
+	todos = Todo.objects.filter(is_finished= False, user=request.user)
+	if len(homeworks) == 0:
+		homework_done = True
+	else:
+		homework_done = False
+
+	if len(todos) == 0:
+		todos_done = True
+	else:
+		todos_done = False
+		
+	context = {
+		'homeworks' : homeworks,
+		'todos' : todos,
+		'homework_done' : homework_done,
+		'todos_done' : todos_done
+	}
+	return render(request,"dashboard/profile.html",context)
+	
+	
+
+
+>>>>>>> 886a01557267e2bce30db29af6934f0572e9e6ca

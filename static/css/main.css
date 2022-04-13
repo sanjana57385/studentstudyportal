@@ -191,7 +191,9 @@ footer .column a+a {
     border-radius: 3px;
     margin-bottom: 20px;
 }
-
+.button, input, optgroup, select, textarea{
+    width: 100%;
+}
 /* 
 .content-section a:hover {
     background: red;
